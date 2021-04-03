@@ -2,7 +2,7 @@
 
 
 
-'''
+```
 Attribute Information:
 
 1. Sample code number: ID number
@@ -16,8 +16,7 @@ Attribute Information:
 10. Normal Nucleoli:1-10
 11. Mitoses:1-10
 12. Class: (2 for Benign, 4 for Malignant)
-'''
-
+```
 
 ## Running the project
 1. Ensure that you are in the project home directory. Create the machine learning model by running below command -
