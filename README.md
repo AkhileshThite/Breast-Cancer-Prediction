@@ -1,5 +1,6 @@
 # Breast Cancer Prediction
 
+![](screenshot.png)
 
 ## Attribute Information:
 ```
