@@ -2,7 +2,21 @@
 
 
 
+'''
+Attribute Information:
 
+1. Sample code number: ID number
+2. Clump Thickness:1-10
+3. Uniformity of Cell size:1-10
+4. Uniformity of Cell shape:1-10
+6. Marginal Adhesion:1-10
+7. Single Epithelial Cell Size:1-10
+8. Bare Nuclei:1-10
+9. Bland Chromatin:1-10
+10. Normal Nucleoli:1-10
+11. Mitoses:1-10
+12. Class: (2 for Benign, 4 for Malignant)
+'''
 
 
 ## Running the project
