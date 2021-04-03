@@ -1,10 +1,8 @@
 # Breast Cancer Prediction
 
 
-
+## Attribute Information:
 ```
-Attribute Information:
-
 1. Sample code number: ID number
 2. Clump Thickness:1-10
 3. Uniformity of Cell size:1-10
