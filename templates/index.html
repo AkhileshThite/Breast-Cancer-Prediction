@@ -1,38 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <!-- to add CSS design -->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'style.css')}}">
-    <meta charset="UTF-8">
-    <title>Breast Cancer Prediction</title>
-</head>
-<body background="static/background.jpeg">
-    <div class="inputs">
-	    <h1>Breast Cancer Prediction</h1>
-
-     <!-- Main Input For Receiving Query to our ML -->
-    <form action="{{ url_for('predict')}}"method="post">
-    	<input type="text" name="Clump Thickness" placeholder="Clump Thickness" required="required" />
-        <input type="text" name="Uniformity of Cell Size" placeholder="Uniformity of Cell Size" required="required" />
-    	<input type="text" name="Uniformity of Cell Shape" placeholder="Uniformity of Cell Shape" required="required" />
-    	<input type="text" name="Marginal Adhesion" placeholder="Marginal Adhesion" required="required" />
-    	<input type="text" name="Single Epithelial Cell Size" placeholder="Single Epithelial Cell Size" required="required" />
-    	<input type="text" name="Bare Nuclei" placeholder="Bare Nuclei" required="required" />
-    	<input type="text" name="Bland Chromatin" placeholder="Bland Chromatin" required="required" />
-    	<input type="text" name="Normal Nucleoli" placeholder="Normal Nucleoli" required="required" />
-        <input type="text" name="Mitoses" placeholder="Mitoses" required="required" />
-        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
-    </form>
-    <br>
-     <br>
-        {{ prediction }}
-    </div>
-	
-<div class="bg"></div>
-	
-<!--Footer-->
 <style>
+body {
+  margin: 0;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: rgba(0,0,0,0.3);
+}
+
+.topnav a {
+  float: left;
+  margin: 0;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 12px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.title {
+    background-color: #ffffff00;
+    color: white;
+    font: 30px tahoma;
+    text-align: center;
+}
+
+.h3 {
+    background-color: #ffffff00;
+    color: #90EE90;
+    font: 13px tahoma;
+    text-align: center;
+}
+
+input[type=text], select {
+    display: block;
+	top: 40%;
+	left: 55%;
+	margin: auto;
+	width: 200px;
+	height: 25px;
+  	text-align: center;
+	margin-bottom: 8px;
+	background: rgba(0,0,0,0.3);
+	border: none;
+	outline: none;
+	padding: 6px;
+	font-size: 13px;
+	color: #fff;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+	border: 1px solid rgba(0,0,0,0.3);
+	border-radius: 4px;
+	box-shadow: inset 0 -5px 45px rgba(100,100,100,0.2), 0 1px 1px rgba(255,255,255,0.2);
+	-webkit-transition: box-shadow .5s ease;
+	-moz-transition: box-shadow .5s ease;
+	-o-transition: box-shadow .5s ease;
+	-ms-transition: box-shadow .5s ease;
+	transition: box-shadow .5s ease;
+}
+
+.button {
+  display: block;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 13px;
+  padding: 6px;
+  border: none;
+  border-radius: 4px;
+}
+
+.output {
+    background-color: #ffffff00;
+    color: #90EE90;
+    font: 15px tahoma;
+    text-align: center;
+    top: 40%;
+	left: 55%;
+	margin: auto;
+	width: 300px;
+	height: 25px;
+    background: black;
+	border: none;
+	outline: none;
+    padding: 6px;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+	border: 1px solid rgba(0,0,0,0.3);
+	border-radius: 4px;
+	box-shadow: inset 0 -5px 45px rgba(100,100,100,0.2), 0 1px 1px rgba(255,255,255,0.2);
+	-webkit-transition: box-shadow .5s ease;
+	-moz-transition: box-shadow .5s ease;
+	-o-transition: box-shadow .5s ease;
+	-ms-transition: box-shadow .5s ease;
+	transition: box-shadow .5s ease;
+}
+
 .footer {
 position: fixed;
 left: 10px;
@@ -44,11 +120,46 @@ color: grey;
 text-align: center;
 }
 </style>
-<div class="footer">
-@Copyright Akhilesh Thite 2021- All Right Reserved.
-    <a href=https://www.github.com/akhileshthite">GitHub Link</a>
-</div>
+<head>
+    <!-- Nav-Bar -->
+    <div class="topnav">
+    <a class="active" href="#home">Home</a>
+    <a href="/inputs">Tumor info</a>
+    <a href="/">Hospitals</a>
+    </div>
+    <br>
+    <!-- Heading -->
+    <h1 class="title">Breast Cancer Predictor</h1>
+    <h3 class="h3">Please be ready with the reports*</h3>
+    <meta charset="UTF-8">
+    <!-- to add style.CSS
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'style.css')}}">-->
+</head>
+<body background="static/background.jpeg">
+  <div>
+    <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}" method="post">
+    	<input type="text" name="Clump Thickness" placeholder="Clump Thickness" required="required" />
+        <input type="text" name="Uniformity of Cell Size" placeholder="Uniformity of Cell Size" required="required" />
+    	<input type="text" name="Uniformity of Cell Shape" placeholder="Uniformity of Cell Shape" required="required" />
+    	<input type="text" name="Marginal Adhesion" placeholder="Marginal Adhesion" required="required" />
+    	<input type="text" name="Single Epithelial Cell Size" placeholder="Single Epithelial Cell Size" required="required" />
+    	<input type="text" name="Bare Nuclei" placeholder="Bare Nuclei" required="required" />
+    	<input type="text" name="Bland Chromatin" placeholder="Bland Chromatin" required="required" />
+    	<input type="text" name="Normal Nucleoli" placeholder="Normal Nucleoli" required="required" />
+        <input type="text" name="Mitoses" placeholder="Mitoses" required="required" />
+        <br>
+        <button type="submit" class="button">Predict</button>
+    </form>
+    <br>
+     <br>
+      <h2 class="output">{{ prediction }}</h2>
+  </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+<!--Footer-->
+<div class="footer">
+    Designed by Akhilesh Thite @Copyright 2021- All Rights Reserved.
+    <a href="https://github.com/AkhileshThite/Breast-Cancer-Prediction"><font color="#FF00FF">GitHub Link</font></a>
+</div>
 </body>
 </html>

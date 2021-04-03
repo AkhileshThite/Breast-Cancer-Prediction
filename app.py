@@ -1,5 +1,5 @@
 # Importing necessary libraries.
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request
 import pandas as pd
 import numpy as np
 import pickle
@@ -37,6 +37,12 @@ def predict():
         output = "Benign tumor: You don't have cancer."
 
     return render_template('index.html', prediction=f'{output}')
+
+
+# Tumor information page
+@app.route("/inputs")
+def inputs():
+    return render_template('tumor.html')
 
 
 # To run the Flask app on local host.
