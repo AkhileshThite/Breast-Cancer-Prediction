@@ -5,17 +5,16 @@ Heroku Web app link: https://breast-cancer-prediction-ml.herokuapp.com
 
 ## Attribute Information:
 ```
-1. Sample code number: ID number
-2. Clump Thickness: 1-10
-3. Uniformity of Cell size: 1-10
-4. Uniformity of Cell shape: 1-10
-6. Marginal Adhesion: 1-10
-7. Single Epithelial Cell Size: 1-10
-8. Bare Nuclei: 1-10
-9. Bland Chromatin: 1-10
-10. Normal Nucleoli: 1-10
-11. Mitoses: 1-10
-12. Class: (2 for Benign, 4 for Malignant)
+ 1. clump thickness: (1-10). Benign cells tend to be grouped in monolayers, while cancerous cells are often grouped in multilayers.
+ 2. cell size uniformity: (1-10). Cancer cells tend to vary in size and shape. That is why these parameters are valuable in determining whether the cells are cancerous or not.
+ 3. cell shape uniformity: (1-10). Uniformity of cell size/shape: Cancer cells tend to vary in size and shape. That is why these parameters are valuable in determining whether the cells are cancerous or not.
+ 4. marginal adhesion: (1-10). Normal cells tend to stick together. Cancer cells tend to lose this ability. So the loss of adhesion is a sign of malignancy.
+ 5. single epithelial_cell_size: (1-10). It is related to the uniformity mentioned above. Epithelial cells that are significantly enlarged may be a malignant cell.
+ 6. bare nuclei: (1-10). This is a term used for nuclei not surrounded by cytoplasm (the rest of the cell). Those are typically seen in benign tumors.
+ 7. bland chromatin: (1-10). Describes a uniform "texture" of the nucleus seen in benign cells. In cancer cells, the chromatin tends to be more coarse.
+ 8. normal nucleoli: (1-10). Nucleoli are small structures seen in the nucleus. In normal cells, the nucleolus is usually very small if visible at all. In cancer cells, the nucleoli become more prominent, and sometimes there are more of them.
+ 9. mitoses: (1-10). Cancer is essentially a disease of uncontrolled mitosis.
+    diagnose: (2 or 4). Benign (non-cancerous) or malignant (cancerous) lump in a breast.
 ```
 
 ## Running the project
