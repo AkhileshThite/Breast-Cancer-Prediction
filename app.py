@@ -52,6 +52,12 @@ def inputs():
     return render_template('tumor.html')
 
 
+# Hospitals google map page
+@app.route("/hospitals")
+def hospitals():
+    return render_template('hospitals.html')
+
+
 # To run the Flask app on local host.
 if __name__ == "__main__":
     app.run(debug=True)
