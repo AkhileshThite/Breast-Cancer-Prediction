@@ -1,5 +1,5 @@
 # Breast Cancer Prediction Web Application
-Heroku Web app link: https://breast-cancer-prediction-ml.herokuapp.com
+Website link: https://breast-cancer-prediction-ml.herokuapp.com
 
 ![](/static/screenshot.png)
 
